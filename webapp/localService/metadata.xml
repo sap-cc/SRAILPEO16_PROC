@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="SRAIL.PEO_MISSPARTS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="StatusReturn" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Status"/>
+                </Key>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="xSRAILxC_PEO_MP_PRODORDERType" sap:label="PEO16 Production Order Consumption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Identification"/>
+                    <PropertyRef Name="ProductionOrder"/>
+                    <PropertyRef Name="ReservationKey"/>
+                    <PropertyRef Name="ReservationPosition"/>
+                </Key>
+                <Property Name="Identification" Type="Edm.String" Nullable="false" MaxLength="24" sap:display-format="UpperCase" sap:label="WBS element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)" sap:value-list="standard"/>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="ReservationKey" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Reservation" sap:quickinfo="Number of reservation/dependent requirements"/>
+                <Property Name="ReservationPosition" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Item no." sap:quickinfo="Item Number of Reservation / Dependent Requirements"/>
+                <Property Name="causer" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number for Order"/>
+                <Property Name="ActivityDescription" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:label="Item Text" sap:quickinfo="BOM Item Text (Line 1)"/>
+                <Property Name="BOMItemNodeNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Item node" sap:quickinfo="BOM item node number"/>
+                <Property Name="ProductionController" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Prodn Supervisor" sap:quickinfo="Production Supervisor"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="128" sap:label="Text" sap:quickinfo="128 Lowercase and Uppercase Letters"/>
+                <Property Name="COGI" Type="Edm.String" MaxLength="1"/>
+                <Property Name="LIEF" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Takt" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cycle"/>
+                <Property Name="TaktOffset" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="TaktOffsetUnit" sap:label="User field quantity" sap:quickinfo="User field for quantity (length 10.3)"/>
+                <Property Name="TaktOffsetUnit" Type="Edm.String" MaxLength="3" sap:label="User field unit" sap:quickinfo="User field: Unit for quantity fields" sap:semantics="unit-of-measure"/>
+                <Property Name="Username" Type="Edm.String" MaxLength="12"/>
+                <NavigationProperty Name="to_OrderDetail" Relationship="SRAIL.PEO_MISSPARTS_SRV.assoc_96281E9EE5B102054AF2FA163218AA32" FromRole="FromRole_assoc_96281E9EE5B102054AF2FA163218AA32" ToRole="ToRole_assoc_96281E9EE5B102054AF2FA163218AA32"/>
+            </EntityType>
+            <EntityType Name="xSRAILxC_PEO_MP_PRODORDER_TMPType" sap:label="PEO16 Production Order temp Consumption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Username"/>
+                    <PropertyRef Name="ProductionOrderOld"/>
+                    <PropertyRef Name="ReservationKey"/>
+                    <PropertyRef Name="ReservationPosition"/>
+                </Key>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/>
+                <Property Name="ProductionOrderOld" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="ReservationKey" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Reservation" sap:quickinfo="Number of reservation/dependent requirements"/>
+                <Property Name="ReservationPosition" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Item no." sap:quickinfo="Item Number of Reservation / Dependent Requirements"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Basic Start Date"/>
+                <Property Name="OrderStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date"/>
+                <Property Name="OrderEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date"/>
+                <Property Name="StorageLocation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location" sap:value-list="standard"/>
+                <Property Name="WorkplaceID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Object ID" sap:quickinfo="Object ID of the resource" sap:value-list="standard"/>
+                <Property Name="Workplace" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Work Center" sap:value-list="standard"/>
+                <Property Name="ProductionSupplyArea" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Prodn Supply Area" sap:quickinfo="Production Supply Area" sap:value-list="standard"/>
+                <Property Name="Identification" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="WBS element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="ProductionController" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Prodn Supervisor" sap:quickinfo="Production Supervisor" sap:value-list="standard"/>
+                <Property Name="causer" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number for Order"/>
+                <Property Name="ActivityDescription" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:label="Item Text" sap:quickinfo="BOM Item Text (Line 1)"/>
+                <Property Name="BOMItemNodeNumber" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="BOM Item" sap:quickinfo="BOM item number"/>
+                <Property Name="ProductionOrderNew" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="Status" Type="Edm.Byte"/>
+            </EntityType>
+            <EntityType Name="xSRAILxI_PEO_MP_PRODCONTROLLVHType" sap:label="PEO16 Production Supervisor Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="ProductionSupervisor"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="ProductionSupervisor" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Production Supervisor"/>
+                <Property Name="ProductionSupervisorName" Type="Edm.String" MaxLength="30" sap:label="Prodn Superv. Name" sap:quickinfo="Production Supervisor Name"/>
+            </EntityType>
+            <EntityType Name="xSRAILxI_PEO_MP_WORKCENTERVHType" sap:label="PEO16 Work Center Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WorkCenterInternalID"/>
+                    <PropertyRef Name="WorkCenterTypeCode"/>
+                </Key>
+                <Property Name="WorkCenterInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="WorkCenterInternalID_Text" sap:label="Object ID" sap:quickinfo="Object ID of the resource"/>
+                <Property Name="WorkCenterInternalID_Text" Type="Edm.String" MaxLength="40" sap:label="Work Center Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WorkCenterTypeCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Object Type" sap:quickinfo="Object types of the CIM resource"/>
+                <Property Name="WorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Work Center"/>
+            </EntityType>
+            <EntityType Name="C_MfgOrderObjPgType" sap:label="Manufacturing Order Object Page" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrder"/>
+                </Key>
+                <Property Name="ProductionOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Production Order" sap:quickinfo="Manufacturing Order ID"/>
+                <Property Name="ProductionPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Production Plant"/>
+                <Property Name="OrderInternalBillOfOperations" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Operation Task List No." sap:quickinfo="Order Internal ID"/>
+                <Property Name="SystemStatusText" Type="Edm.String" MaxLength="30" sap:label="Status" sap:quickinfo="Object status"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number for Order" sap:value-list="standard"/>
+                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="ProductionUnit" Type="Edm.String" MaxLength="3" sap:label="Production Unit" sap:quickinfo="Production Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="TotalQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="ProductionUnit" sap:label="Total Quantity" sap:quickinfo="Manufacturing Order Planned Total Quantity"/>
+                <Property Name="ManufacturingOrderType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/>
+                <Property Name="MRPArea" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="MRP Area"/>
+                <Property Name="ManufacturingObject" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Object Number" sap:quickinfo="Object Internal ID"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Planning Plant" sap:quickinfo="Planning Plant for an Order"/>
+                <Property Name="MfgOrderConfirmedYieldQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="ProductionUnit" sap:label="Confirmed Yield" sap:quickinfo="Confirmed Yield Quantity From Order Confirmation"/>
+                <Property Name="MfgOrderPlannedStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Planned Start Date" sap:quickinfo="Manufacturing Order Planned Start Date"/>
+                <Property Name="MfgOrderPlannedStartTime" Type="Edm.Time" Precision="0" sap:label="Planned Start Time" sap:quickinfo="Manufacturing Order Planned Start Time"/>
+                <Property Name="MfgOrderPlannedEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Planned End Date" sap:quickinfo="Manufacturing Order Planned End Date"/>
+                <Property Name="MfgOrderPlannedEndTime" Type="Edm.Time" Precision="0" sap:label="Planned End Time" sap:quickinfo="Manufacturing Order Planned End Time"/>
+                <Property Name="MfgOrderScheduledStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Scheduled Start Date" sap:quickinfo="Manufacturing Order Scheduled Start Date"/>
+                <Property Name="MfgOrderScheduledStartTime" Type="Edm.Time" Precision="0" sap:label="Scheduled Start Time" sap:quickinfo="Manufacturing Order Scheduled Start Time"/>
+                <Property Name="MfgOrderScheduledEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Scheduled End Date" sap:quickinfo="Manufacturing Order Scheduled End Date"/>
+                <Property Name="MfgOrderScheduledEndTime" Type="Edm.Time" Precision="0" sap:label="Scheduled End Time" sap:quickinfo="Manufacturing Order Scheduled End Time"/>
+                <Property Name="ProductionVersion" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Production Version" sap:value-list="standard"/>
+                <Property Name="SalesOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order" sap:value-list="standard"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales Order Item" sap:value-list="standard"/>
+                <Property Name="PlannedOrder" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Planned Order" sap:value-list="standard"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Name of Customer"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:label="WBS Element"/>
+                <Property Name="WBSElementInternalID" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="WBS Element Internal" sap:quickinfo="Work Breakdown Structure Element Internal ID" sap:value-list="standard"/>
+                <Property Name="WBSDescription" Type="Edm.String" MaxLength="40" sap:label="WBS Element Name"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="FunctionalArea" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Functional Area"/>
+                <Property Name="PlannedCostsCostingVariant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="CostingVariantName" sap:label="Planned Costing Variant" sap:quickinfo="Costing Variant for Planned Costs"/>
+                <Property Name="CostingVariantName" Type="Edm.String" MaxLength="25" sap:label="Name" sap:quickinfo="Name of Costing Variant"/>
+                <Property Name="ActualCostsCostingVariant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="TargetCostVariantName" sap:label="Actual Costing Variant" sap:quickinfo="Costing Variant For Actual Costs"/>
+                <Property Name="TargetCostVariantName" Type="Edm.String" MaxLength="25" sap:label="Name" sap:quickinfo="Name of Costing Variant"/>
+                <Property Name="OrderIsEventBasedPosting" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Event-Based Posting" sap:quickinfo="Event-Based Posting Yes/No"/>
+                <Property Name="UserID" Type="Edm.String" MaxLength="70" sap:display-format="UpperCase" sap:label="Recipient" sap:quickinfo="Object ID for recipient"/>
+                <Property Name="MRPController" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="MRP Controller"/>
+                <Property Name="ProductionSupervisor" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Production Supervisor"/>
+                <Property Name="ManufacturingOrderCategory" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Order Category"/>
+                <Property Name="StockSegment" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Stock Segment"/>
+            </EntityType>
+            <EntityType Name="I_CompanyCodeStdVHType" sap:label="Company Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="I_MaterialStdVHType" sap:label="Material" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:text="Material_Text" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Material_Text" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_PlannedOrderStdVHType" sap:label="Planned Order" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PlannedOrder"/>
+                </Key>
+                <Property Name="PlannedOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Planned Order"/>
+            </EntityType>
+            <EntityType Name="I_ProductionSupplyAreaStdVHType" sap:label="Production Supply Area" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionSupplyArea"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="ProductionSupplyArea" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="ProductionSupplyArea_Text" sap:label="Production Supply Area"/>
+                <Property Name="ProductionSupplyArea_Text" Type="Edm.String" MaxLength="40" sap:label="Production Supply Area Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+            </EntityType>
+            <EntityType Name="I_ProductionVersionStdVHType" sap:label="Production Version" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="ProductionVersion"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="ProductionVersion" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="ProductionVersionText" sap:label="Production Version"/>
+                <Property Name="ProductionVersionText" Type="Edm.String" MaxLength="40" sap:label="Prodn Version Text" sap:quickinfo="Short Text for Production Version"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity End Date"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity Start Date"/>
+            </EntityType>
+            <EntityType Name="I_SalesOrderItemStdVHType" sap:label="Sales Order Item" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="SalesOrderItem"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="SalesOrderItemText" sap:label="Item" sap:quickinfo="Sales Order Item"/>
+                <Property Name="SalesOrderItemText" Type="Edm.String" MaxLength="40" sap:label="Item Description" sap:quickinfo="Short text for sales order item"/>
+            </EntityType>
+            <EntityType Name="I_SalesOrderStdVHType" sap:label="Sales Order" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order"/>
+            </EntityType>
+            <EntityType Name="I_StorageLocationStdVHType" sap:label="Storage Location" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLocation"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="StorageLocationName" sap:label="Storage location"/>
+                <Property Name="StorageLocationName" Type="Edm.String" MaxLength="16" sap:label="Storage Loc. Name" sap:quickinfo="Storage Location Name"/>
+                <Property Name="ConfigDeprecationCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Validity" sap:quickinfo="Value Help: Flag Deprecated Entries"/>
+            </EntityType>
+            <EntityType Name="I_WBSElementStdVHType" sap:label="WBS Element Details" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WBSElement"/>
+                </Key>
+                <Property Name="WBSElement" Type="Edm.String" Nullable="false" MaxLength="24" sap:display-format="UpperCase" sap:text="WBSDescription" sap:label="WBS element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="WBSDescription" Type="Edm.String" MaxLength="40" sap:label="WBS Element Name"/>
+            </EntityType>
+            <EntityType Name="I_WBSElmntByIntKeyStdVHType" sap:label="WBS Element Details by Internal ID" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WBSElementInternalID"/>
+                </Key>
+                <Property Name="WBSElementInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="WBS Element Internal ID" sap:quickinfo="WBS Element"/>
+                <Property Name="WBSElement" Type="Edm.String" MaxLength="24" sap:display-format="UpperCase" sap:text="WBSDescription" sap:label="WBS Element" sap:quickinfo="Work Breakdown Structure Element (WBS Element)"/>
+                <Property Name="WBSDescription" Type="Edm.String" MaxLength="40" sap:label="WBS Element Name"/>
+            </EntityType>
+            <Association Name="assoc_96281E9EE5B102054AF2FA163218AA32" sap:content-version="1">
+                <End Type="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType" Multiplicity="1" Role="FromRole_assoc_96281E9EE5B102054AF2FA163218AA32"/>
+                <End Type="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType" Multiplicity="0..1" Role="ToRole_assoc_96281E9EE5B102054AF2FA163218AA32"/>
+            </Association>
+            <EntityContainer Name="SRAIL_PEO_MISSPARTS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="StatusReturnSet" EntityType="SRAIL.PEO_MISSPARTS_SRV.StatusReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="xSRAILxC_PEO_MP_PRODORDER" EntityType="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xSRAILxC_PEO_MP_PRODORDER_TMP" EntityType="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDER_TMPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xSRAILxI_PEO_MP_PRODCONTROLLVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.xSRAILxI_PEO_MP_PRODCONTROLLVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xSRAILxI_PEO_MP_WORKCENTERVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.xSRAILxI_PEO_MP_WORKCENTERVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="C_MfgOrderObjPg" EntityType="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CompanyCodeStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_CompanyCodeStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_MaterialStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_MaterialStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_PlannedOrderStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_PlannedOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_ProductionSupplyAreaStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_ProductionSupplyAreaStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_ProductionVersionStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_ProductionVersionStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_SalesOrderItemStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_SalesOrderItemStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_SalesOrderStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_SalesOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_StorageLocationStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_StorageLocationStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_WBSElementStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_WBSElementStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_WBSElmntByIntKeyStdVH" EntityType="SRAIL.PEO_MISSPARTS_SRV.I_WBSElmntByIntKeyStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_96281E9EE5B102054AF2FA163218AA32" Association="SRAIL.PEO_MISSPARTS_SRV.assoc_96281E9EE5B102054AF2FA163218AA32" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xSRAILxC_PEO_MP_PRODORDER" Role="FromRole_assoc_96281E9EE5B102054AF2FA163218AA32"/>
+                    <End EntitySet="C_MfgOrderObjPg" Role="ToRole_assoc_96281E9EE5B102054AF2FA163218AA32"/>
+                </AssociationSet>
+                <FunctionImport Name="processProdOrders" ReturnType="SRAIL.PEO_MISSPARTS_SRV.StatusReturn" EntitySet="StatusReturnSet" m:HttpMethod="POST">
+                    <Parameter Name="ProductionOrder" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ReservationKey" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ReservationPosition" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="setProdOrdersData" ReturnType="SRAIL.PEO_MISSPARTS_SRV.StatusReturn" EntitySet="StatusReturnSet" m:HttpMethod="POST">
+                    <Parameter Name="ProductionOrder" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ReservationKey" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ReservationPosition" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="OrderStartDate" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Time Stamp"/>
+                    <Parameter Name="StorageLocation" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Workplace" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ProductionSupplyArea" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Plant" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="ProductionController" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="createProdOrders" ReturnType="SRAIL.PEO_MISSPARTS_SRV.StatusReturn" EntitySet="StatusReturnSet" m:HttpMethod="POST">
+                    <Parameter Name="ProductionOrder" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ReservationKey" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="ReservationPosition" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/Identification" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="WBS Element Details"/>
+                        <PropertyValue Property="CollectionPath" String="I_WBSElementStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Identification"/>
+                                    <PropertyValue Property="ValueListProperty" String="WBSElement"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WBSDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDERType/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material"/>
+                        <PropertyValue Property="CollectionPath" String="I_MaterialStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDER_TMPType/StorageLocation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Storage Location"/>
+                        <PropertyValue Property="CollectionPath" String="I_StorageLocationStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="StorageLocation"/>
+                                    <PropertyValue Property="ValueListProperty" String="StorageLocation"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StorageLocationName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ConfigDeprecationCode"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDER_TMPType/WorkplaceID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="PEO16 Work Center Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="xSRAILxI_PEO_MP_WORKCENTERVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenter"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WorkplaceID"/>
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterInternalID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterInternalID_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDER_TMPType/Workplace" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="PEO16 Work Center Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="xSRAILxI_PEO_MP_WORKCENTERVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Workplace"/>
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenter"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterInternalID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WorkCenterInternalID_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDER_TMPType/ProductionSupplyArea" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Production Supply Area"/>
+                        <PropertyValue Property="CollectionPath" String="I_ProductionSupplyAreaStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ProductionSupplyArea"/>
+                                    <PropertyValue Property="ValueListProperty" String="ProductionSupplyArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProductionSupplyArea_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.xSRAILxC_PEO_MP_PRODORDER_TMPType/ProductionController" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="PEO16 Production Supervisor Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="xSRAILxI_PEO_MP_PRODCONTROLLVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ProductionController"/>
+                                    <PropertyValue Property="ValueListProperty" String="ProductionSupervisor"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProductionSupervisorName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material"/>
+                        <PropertyValue Property="CollectionPath" String="I_MaterialStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType/ProductionVersion" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Production Version"/>
+                        <PropertyValue Property="CollectionPath" String="I_ProductionVersionStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ProductionVersion"/>
+                                    <PropertyValue Property="ValueListProperty" String="ProductionVersion"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProductionVersionText"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ValidityEndDate"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ValidityStartDate"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType/SalesOrder" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Order"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrderStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrder"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrder"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType/SalesOrderItem" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Sales Order Item"/>
+                        <PropertyValue Property="CollectionPath" String="I_SalesOrderItemStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrderItem"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrderItem"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrder"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrderItemText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType/PlannedOrder" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Planned Order"/>
+                        <PropertyValue Property="CollectionPath" String="I_PlannedOrderStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PlannedOrder"/>
+                                    <PropertyValue Property="ValueListProperty" String="PlannedOrder"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType/WBSElementInternalID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="WBS Element Details by Internal ID"/>
+                        <PropertyValue Property="CollectionPath" String="I_WBSElmntByIntKeyStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="WBSElementInternalID"/>
+                                    <PropertyValue Property="ValueListProperty" String="WBSElementInternalID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WBSElement"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WBSDescription"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.I_ProductionVersionStdVHType/Material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Material"/>
+                        <PropertyValue Property="CollectionPath" String="I_MaterialStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.SRAIL_PEO_MISSPARTS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="SRAIL.PEO_MISSPARTS_SRV.C_MfgOrderObjPgType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>ProductionOrder</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/srail/PEO_MISSPARTS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://ERP-S4X.STADLERRAIL.COM:443/sap/opu/odata/srail/PEO_MISSPARTS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

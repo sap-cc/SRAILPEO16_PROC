@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:smartField="sap.ui.comp.smartfield" 
+    xmlns:form="sap.ui.comp.smartform">
+
+    <Dialog
+        id="dlgCreate"
+		title="{i18n>editOrders}"
+        resizable="false"
+        draggable="true">
+		<content>
+
+            <form:SmartForm id="sfEdit" class="editableForm" editTogglable="false" editable="true">
+                <form:Group id="sfgEdit" title="{i18n>editRequired}">
+                    <form:GroupElement id="ge1">
+                        <smartField:SmartField id="idPsa" textLabel="{i18n>psa}" value="{ProductionSupplyArea}" textInEditModeSource="ValueList" entitySet="xSRAILxC_PEO_MP_PRODORDER_TMP" change="changePsa" />
+                    </form:GroupElement>
+                    <form:GroupElement id="ge2" label="{i18n>workplace}">
+                        <VBox id="ge2Vbox">
+                            <smartField:SmartField id="idWorkplace" value="{WorkplaceID}" textInEditModeSource="ValueList" entitySet="xSRAILxC_PEO_MP_PRODORDER_TMP" change="changeWorkplace" />
+                            <Label id="lblWorkplace" text="" visible="false" />
+                        </VBox>
+                    </form:GroupElement>
+                    <form:GroupElement id="ge3">
+                        <smartField:SmartField id="idProdController" textLabel="{i18n>productionController}" value="{ProductionController}" textInEditModeSource="ValueList" entitySet="xSRAILxC_PEO_MP_PRODORDER_TMP" />
+                    </form:GroupElement>
+                    <form:GroupElement id="ge4">
+                        <Label id="lblStart" text="{i18n>orderStartDate}:" />
+                        <DatePicker id="idStart" displayFormat="dd.MM.yyyy" valueFormat="dd.MM.yyyy" />
+                    </form:GroupElement>
+                </form:Group>
+            </form:SmartForm>
+
+        </content>
+        <buttons>
+            <Button id="btnSave" text="{i18n>save}" type="Accept" press="save"></Button>
+            <Button id="btnCancel" text="{i18n>cancel}" type="Default" press="closeEditDialog"></Button>
+        </buttons>
+
+	</Dialog>
+
+</core:FragmentDefinition>
